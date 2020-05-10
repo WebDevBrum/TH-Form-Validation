@@ -29,19 +29,28 @@ function isValidPassword(password) {
 
 // The telephone number must be in the format of (555) 555-5555
 function isValidTelephone(telephone) {
-  return /^\(\d{3}\)\s\d{3}-\d{4}$/.test(telephone); //tgis is uneccsry and formatting can be created automatically.
+ return  /^\D*\d{3}\D*\d{3}\D*\d{4}\D*$/.test(telephone);
+  
+  //replaces formatted version below , note D* is zero or more none numaral characters so could but brackets , spaces or nothing between each set of digits, also   backslash D at end to allow for trailing spaces for example  
+ //^\(\d{3}\)\s\d{3}-\d{4}$/.test(telephone); //tgis is uneccsry and formatting can be created automatically.
 }
 
 // Must be a valid email address
-function isValidEmail(email) {}
+function isValidEmail(email) {
+  return /^[^@]+@[^@.]+\.[a-z]+$/i.test(email);
+}
 
 /**
  * 
  * FORMATTING FUNCTIONS
  * 
  */
+ 
+ //this function written after accepting changing isValidTelephone to accept any combos 
+ 
+function formatTelephone(text) {
 
-function formatTelephone(text) {}
+}
 
 /**
  * 
@@ -75,3 +84,4 @@ passwordInput.addEventListener("input", createListener(isValidPassword));
 telephoneInput.addEventListener("input", createListener(isValidTelephone));
 
 emailInput.addEventListener("input", createListener(isValidEmail));
+
